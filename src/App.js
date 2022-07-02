@@ -8,13 +8,19 @@ import "swiper/css/effect-cards";
 
 // import required modules
 import { EffectCards } from "swiper";
-
+import data from "./data";
 
 import './App.css';
 
 
 
 function App() {
+
+
+
+
+
+
   return (
     <div>
       <Swiper
@@ -23,18 +29,27 @@ function App() {
         modules={[EffectCards]}
         className="mySwiper"
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+
+        {data.map((item, index) => (
+          <SwiperSlide>
+            <div className="card">
+              <div className="card-body">
+                <h5 className="card-title">{item.question}</h5>
+                {item.answers.map((answer) => {
+              return (
+                <div >
+                  <h2>Answer: {answer}</h2>
+                </div>
+              );
+            })}
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );
 }
+
 
 export default App;
