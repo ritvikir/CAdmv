@@ -22,6 +22,12 @@ function App() {
     var val = event.target.value;
     var newVal = val.split(",");
     var bool = newVal[1];
+    if (bool == "true") {
+      reward();
+    } else {
+      console.log("no reward");
+    }
+    
   }
 
   return (
