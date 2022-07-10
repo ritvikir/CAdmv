@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useReward } from 'react-rewards';
+import styled from 'styled-components'
 
 // Import Swiper styles
 import "swiper/css";
@@ -15,14 +16,16 @@ import "./App.css";
 
 function App() {
 
-  const { reward, isAnimating } = useReward('rewardId', 'confetti');
+  const { reward, isAnimating } = useReward('rewardId', 'confetti', {zIndex: 100, startVelocity:60, spread: 70, lifetime:75});
+
+
 
 
   function click(event) {
     var val = event.target.value;
     var newVal = val.split(",");
     var bool = newVal[1];
-    if (bool == "true") {
+    if (bool === "true") {
       reward();
     } else {
       console.log("no reward");
@@ -32,16 +35,16 @@ function App() {
 
   return (
     <div>
-      <Swiper
+    <Swiper
         effect={"cards"}
         grabCursor={true}
         modules={[EffectCards]}
-        className=" mt-40"
+        className="mt-40"
       >
 
         {data.map((item, index) => (
           <SwiperSlide>
-            <div className="card">
+            <div className="card" >
               <div className=" px-10 card-body">
                 <div className=" pt-20 pb-10">
                   <h5 className="card-title text-xl font-semibold">
@@ -57,7 +60,6 @@ function App() {
                           class="btn btn-wide btn-active btn-ghost"
                           value={answer}
                           disabled={isAnimating}
-                          id="rewardId"
                         >
                           {answer}
                         </button>
@@ -70,6 +72,8 @@ function App() {
           </SwiperSlide>
         ))}
       </Swiper>
+      <span className="flex justify-center" id="rewardId"></span>      
+
     </div>
   );
 }
