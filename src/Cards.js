@@ -13,8 +13,9 @@ import data from "./data";
 export default function Main() {
     const { reward, isAnimating } = useReward('rewardId', 'confetti', {zIndex: 100, startVelocity:60, spread: 70, lifetime:75});
   
-  
-  
+    const styles ={
+    }
+    const [state, setState] = useState(styles)
   
     function click(event) {
       var val = event.target.value;
@@ -23,26 +24,31 @@ export default function Main() {
       if (bool === "true") {
         reward();
       } else {
-        console.log("no reward");
+        setState({
+            backgroundColor: '#FF6863'
+        });
+        setTimeout(function(){
+            setState({ });
+
+       },500);
       }
       
     }
   
     return (
-      <div>
+      <div style={state} className="h-screen pt-40">
       <Swiper
           effect={"cards"}
           grabCursor={true}
           modules={[EffectCards]}
-          className="mt-40"
         >
   
           {data.map((item, index) => (
-            <SwiperSlide>
-              <div className="card" >
+            <SwiperSlide >
+              <div  className="card" >
                 <div className=" px-10 card-body">
                   <div className=" pt-20 pb-10">
-                    <h5 className="card-title text-xl font-semibold">
+                    <h5  className="card-title text-xl font-semibold">
                       {item.question}
                     </h5>
                   </div>
@@ -55,6 +61,7 @@ export default function Main() {
                             class="btn btn-wide btn-active btn-ghost"
                             value={answer}
                             disabled={isAnimating}
+                            
                           >
                             {answer}
                           </button>

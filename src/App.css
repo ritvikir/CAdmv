@@ -16,11 +16,9 @@
   background-color: white
 }
 
-.swiper-slide:nth-child(1) {
-  /* background-color: #FFCCCB; */
+body {
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
-
-
 
 /* 
 

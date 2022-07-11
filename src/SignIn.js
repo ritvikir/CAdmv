@@ -1,15 +1,10 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
-import {useAuthState} from 'react-firebase-hooks/auth'
-import {useCollection} from 'react-firebase-hooks/firestore'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import {  MenuIcon, XIcon } from '@heroicons/react/outline'
 import { FaGoogle } from 'react-icons/fa';
-
-import { getAuth } from "firebase/auth";
-
 firebase.initializeApp({
   apiKey: "AIzaSyBTeoazV1qHL0WhdeI5csJlzHdV4mUXlf4",
   authDomain: "dmvapp-c14da.firebaseapp.com",
